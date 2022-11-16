@@ -1,0 +1,41 @@
+name: Quality checks
+
+on: [pull_request]
+
+jobs:
+
+  phpcsfixer:
+    name: "PHP CS Fixer"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+      - name: "Install"
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: "Run phpcsfix"
+        run: php vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php
+
+  phpstan:
+    name: "PHPStan Static Analysis"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setup private key"
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.LIBRARIES_SSH_PRIVATE_KEY }}
+          name: id_rsa
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      - name: "Checkout"
+        uses: actions/checkout@v2
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+      - name: "Install"
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: "Run phpstan"
+        run: vendor/bin/phpstan analyze src --no-progress

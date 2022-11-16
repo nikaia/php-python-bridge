@@ -24,4 +24,4 @@ setup-precommit-hook: ## Run phpcsfix-staged as precommit hook
 	@echo "pre-commit hook installed."
 
 phpstan: ## Run PHPStan analyzer
-	@php vendor/bin/phpstan analyze app
+	@php vendor/bin/phpstan analyze src
