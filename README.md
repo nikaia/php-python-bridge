@@ -1,7 +1,7 @@
 # PHP Python Bridge
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nikaia/php-python-bridge.svg?style=flat-square)](https://packagist.org/packages/nikaia/php-python-bridge)
-[![Tests](https://github.com/nikaia/php-python-bridge/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/nikaia/php-python-bridge/actions/workflows/run-tests.yml)
+[![Tests](https://github.com/nikaia/php-python-bridge/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/nikaia/php-python-bridge/actions/workflows/tests.yml)
 
 Call your Python scripts from Php
 
@@ -17,7 +17,7 @@ composer require nikaia/php-python-bridge
 
 The bridge work by executing a python script that accept piped json arbitary data, and returns json response.
 
-> check [this script](tests/_fixtures/ok.script.py) for a working example
+> check [tests/_fixtures/ok.script.py](tests/_fixtures/ok.script.py) for a working example.
 
 
 ```php
