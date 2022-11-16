@@ -1,0 +1,40 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.2, 8.1, 8.0]
+    env:
+      CLOVER_FILE: clover.xml
+
+    name: Php ${{ matrix.php }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Install dependencies
+        run: composer update --prefer-dist --no-interaction
+
+      - name: Execute tests
+        run: XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover=$CLOVER_FILE
+
+      - run: ls -la
+
+      - name: "Coverage report"
+        uses: slavcodev/coverage-monitor-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          coverage_path: ${{ env.CLOVER_FILE }}
+          threshold_alert: 50
+          threshold_warning: 80

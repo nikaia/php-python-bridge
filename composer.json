@@ -1,0 +1,50 @@
+{
+    "name": "nikaia/php-python-bridge",
+    "description": "Call your NodeJS scripts from Php",
+    "keywords": [
+        "Nikaia",
+        "php-python-bridge"
+    ],
+    "homepage": "https://github.com/nikaia/php-python-bridge",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nassif Bourguig",
+            "email": "nbourguig@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "symfony/process": "^6.1|^5.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.13",
+        "mockery/mockery": "^1.5",
+        "phpstan/phpstan": "^1.9",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nikaia\\PythonBridge\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nikaia\\PythonBridge\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "release": "npx standard-version release --no-verify",
+        "release-dry": "npx standard-version release --no-verify --dry-run",
+        "release-patch": "npx standard-version --release-as patch --no-verify",
+        "release-minor": "npx standard-version --release-as minor --no-verify",
+        "release-major": "npx standard-version --release-as major --no-verify",
+        "release-first": "npx standard-version --first-release --no-verify"
+    }
+}
