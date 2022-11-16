@@ -23,6 +23,11 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
 
+      - name : Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
       - name: Install dependencies
         run: composer update --prefer-dist --no-interaction
 
