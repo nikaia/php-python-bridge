@@ -37,13 +37,6 @@ catch (BridgeException $e) {
 var_dump($response->json());   // ['foo' => 'bar']
 var_dump($response->output()); // the raw output of the script {"foo":"bar"}
 ```
-```    
-``` 
-
-```
-
-
-```
 
 ## Changelog
 

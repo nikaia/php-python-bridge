@@ -34,7 +34,7 @@ jobs:
       - name: Execute tests
         run: XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover=$CLOVER_FILE
 
-      - run: ls -la
+      - run: /usr/bin/python --version
 
       - name: "Coverage report"
         uses: slavcodev/coverage-monitor-action@v1
