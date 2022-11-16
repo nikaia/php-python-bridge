@@ -17,7 +17,7 @@ composer require nikaia/php-python-bridge
 
 The bridge work by executing a python script that accept piped json arbitary data, and returns json response.
 
-> check `tests/_fixtures/ok.script.py` for a working example
+> check [this script](tests/_fixtures/ok.script.py) for a working example
 
 
 ```php
